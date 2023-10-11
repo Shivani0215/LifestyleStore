@@ -1,0 +1,17 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    pip install awscli
+    aws configure set aws_access_key_id $(AKIAQ376YBZEKMBOXT6R)
+    aws configure set aws_secret_access_key $(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)
+    aws configure set region $(ap-south-1)
+  displayName: 'Install and Configure AWS CLI'
+
+- script: |
+    aws s3 ls s3://testing/
+  displayName: 'List Objects in S3 Bucket'
